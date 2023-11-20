@@ -191,3 +191,49 @@ body {
 .right p strong {
     color: darkred;
 }
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-1);
+    padding: 0 var(--space-1);
+    width: 100%;
+}
+
+label {
+    font-size: 1.2rem;
+    font-family: Bahnschrift, Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: var(--space-1);
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1.2rem;
+    font-family: Bahnschrift, Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border: 1px solid darkred;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: var(--space-1);
+    border-radius: 5px;
+    border: none;
+    font-size: 1.2rem;
+    font-family: Bahnschrift, Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+    background: darkred;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
