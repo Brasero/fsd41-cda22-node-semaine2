@@ -1,6 +1,6 @@
 import express from "express"
 import session from 'express-session';
-import {counterMiddleware, logMiddleware} from './middlewares.js';
+import {counterMiddleware, logMiddleware, redirectMiddleware} from './middlewares.js';
 
 const app = express()
 
@@ -14,6 +14,7 @@ app.use(session({
 }))
 app.use(counterMiddleware)
 app.use(logMiddleware)
+app.use(redirectMiddleware)
 
 
 // app.all("*", (req, res) => {
@@ -33,19 +34,20 @@ app.use(logMiddleware)
 // })
 
 app.get('/', (req, res) => {
-    if (req.session.counter) {
-        req.session.counter++
-    } else {
-        req.session.counter = 1;
-    }
 
-    // destruction de la session
-    req.session.destroy((err) => {})
-    req.session.regenerate((err) => {
+    res.send({page: 'home', counter: req.session.counter})
+})
 
-    })
-    console.log(req.session.counter);
-    res.send('ok')
+app.get('/checkPage', (req, res) => {
+    res.send(`
+        <div>valeur du compteur : ${req.session.counter}</div>
+        <a href="/delete">Réinitialisé le compteur</a>
+    `)
+})
+
+app.get('/delete', (req,res) => {
+    req.session.counter = 0;
+    res.redirect('/');
 })
 
 
