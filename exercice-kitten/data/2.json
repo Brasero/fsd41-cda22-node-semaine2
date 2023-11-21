@@ -1,7 +1,7 @@
 {
   "id": 2,
-  "name": "Wild",
+  "name": "Youpla",
   "image": "wild.jpg",
-  "age": 10,
-  "description": "super cat"
+  "age": 5,
+  "description": "test de modification"
 }

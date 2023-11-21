@@ -9,6 +9,7 @@ router.get('/add', kittenController.addKitten)
 router.get('/update/:id', kittenController.updateKitten)
 
 router.post('/add', kittenController.addKitten)
+router.post('/update/:id', kittenController.updateKitten)
 
 
 

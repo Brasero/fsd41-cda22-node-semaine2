@@ -105,8 +105,25 @@ const updateKitten = (req, res) => {
     const kittens = JSON.parse(readFileSync(join(dataPath, 'kittens.json'), 'utf8'))
     const kitten = kittens.find(kitten => kitten.id === parseInt(id))
 
-    if (method === 'POST') {
+    if(!kitten) {
+        res.status(404).send('kitten not found')
+        return
+    }
 
+    if (method === 'POST') {
+        Object.keys(req.body).map(key => {
+            kitten[key] = key === 'age' ? parseInt(req.body[key]) : req.body[key]
+        })
+        const newKittens = kittens.map(baseKitten => {
+            if(baseKitten.id === id) {
+                return kitten
+            }
+            return baseKitten;
+        })
+        writeFileSync(join(dataPath, `${id}.json`), JSON.stringify(kitten, null, 2))
+        writeFileSync(join(dataPath, 'kittens.json'), JSON.stringify(newKittens, null, 2))
+
+        res.redirect(`/kittens/${id}`);
         return
     }
 
