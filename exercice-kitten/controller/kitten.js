@@ -87,7 +87,7 @@ const addKitten = (req, res) => {
             JSON.stringify(kitten, null, 2)
         )
 
-        res.redirect('/')
+        res.redirect(`/kittens/${kitten.id}`)
         return
     }
 

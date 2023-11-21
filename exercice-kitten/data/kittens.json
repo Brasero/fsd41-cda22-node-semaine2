@@ -26,5 +26,12 @@
     "age": 12,
     "description": "ffafazfa",
     "image": "http://placekitten.com/750/700"
+  },
+  {
+    "id": 5,
+    "name": "test",
+    "age": 23,
+    "description": "tgzeiozffioea",
+    "image": "http://placekitten.com/1050/850"
   }
 ]

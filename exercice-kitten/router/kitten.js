@@ -3,13 +3,18 @@ import kittenController from "../controller/kitten.js"
 
 const router = express.Router()
 
-router.get('/', kittenController.home)
+const middleware = (req,res,next) => {
+    console.log('home page');
+    next()
+}
+
+router.get('/', middleware, kittenController.home)
 router.get('/kittens/:id', kittenController.getKittenById)
 router.get('/add', kittenController.addKitten)
-router.get('/update/:id', kittenController.updateKitten)
 
 router.post('/add', kittenController.addKitten)
-router.post('/update/:id', kittenController.updateKitten)
+
+router.all('/update/:id', kittenController.updateKitten)
 
 
 
