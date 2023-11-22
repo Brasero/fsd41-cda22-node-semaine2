@@ -1,0 +1,22 @@
+mixin menuItem(itemTitle, href)
+    li(class=(title === itemTitle) ? "active link" : 'link')
+        a(href=href) #{itemTitle}
+
+doctype html
+html(lang='fr')
+    head
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet' href='/assets/css/style.css')
+        title= title || 'Blog'
+
+    body
+        header
+            nav
+                ul
+                    +menuItem('Home', '/')
+                    +menuItem('Posts', '/posts')
+
+        block content
+
+        footer 2019 | Tous droit réservées

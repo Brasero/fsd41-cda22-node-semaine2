@@ -1,0 +1,7 @@
+extends ../layout/layout
+
+block content
+    h1#title Home
+    ul#posts
+        each post in posts
+            li.listItem #{post.title} - #{post.date}
