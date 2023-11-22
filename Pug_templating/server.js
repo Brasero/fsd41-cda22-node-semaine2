@@ -3,7 +3,6 @@ import dotenv from 'dotenv'
 import {join} from 'node:path'
 import userRoutes from './router/routes.js'
 import session from 'express-session';
-import message from "./middleware/message.js"
 
 dotenv.config()
 
@@ -26,8 +25,6 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }))
-
-app.use(message)
 
 app.use('/', userRoutes)
 

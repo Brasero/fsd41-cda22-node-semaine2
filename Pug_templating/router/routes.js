@@ -1,10 +1,12 @@
 import express from "express"
-import {home} from '../controller/user.controller.js'
+import {home, addPost} from '../controller/user.controller.js'
 
 
 const router = express.Router()
 
 router.get('/', home)
 
+
+router.all('/add', addPost)
 
 export default router

@@ -1,6 +1,7 @@
 import express from "express"
 import session from 'express-session';
 import {counterMiddleware, logMiddleware, redirectMiddleware} from './middlewares.js';
+import MongoStore from "connect-mongo";
 
 const app = express()
 
@@ -10,10 +11,13 @@ app.use(session({
     name: 'name',
     secret: 'mySecret',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: MongoStore.create({mongoUrl: 'mongodb://127.0.0.1:27017/'}),
+    cookie: {maxAge: 180 * 60 * 1000}
 }))
 app.use(counterMiddleware)
 app.use(logMiddleware)
+
 
 
 // app.all("*", (req, res) => {
@@ -43,7 +47,7 @@ app.get('/checkPage', (req, res) => {
     `)
 })
 
-app.get('/delete', (req,res) => {
+app.get('/delete', (req, res) => {
     req.session.counter = 0;
     res.redirect('/');
 })
