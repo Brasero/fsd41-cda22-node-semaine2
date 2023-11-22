@@ -22,7 +22,7 @@ export const logMiddleware = (req,res,next) => {
 
 export const redirectMiddleware = (req,res,next) => {
 
-    if(req.session.counter && req.session.counter > 10 && req.path !== '/checkPage') {
+    if(req.session.counter && req.session.counter > 10) {
         res.redirect('/checkPage')
         return
     }

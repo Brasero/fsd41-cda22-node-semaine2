@@ -14,7 +14,6 @@ app.use(session({
 }))
 app.use(counterMiddleware)
 app.use(logMiddleware)
-app.use(redirectMiddleware)
 
 
 // app.all("*", (req, res) => {
@@ -33,8 +32,7 @@ app.use(redirectMiddleware)
 //     `)
 // })
 
-app.get('/', (req, res) => {
-
+app.get('/', redirectMiddleware, (req, res) => {
     res.send({page: 'home', counter: req.session.counter})
 })
 
