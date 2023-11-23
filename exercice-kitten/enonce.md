@@ -1,48 +1,51 @@
-# KITTEN POST 
+Créez dans le dossier Exercices un dossier /inventory/.
 
-## PART 1 : Reprenez l'exercice kitten et réadapter le afin d'obtenir la structure suivante : 
-
-```text
-exercice-kitten/
-├── routers/
-│   └── kittens.js
-├── controllers/
-│   └── kittens.js
-├── data/…
-├── public/…
-├── server.js
-└── package.json
-```
-Refondée l'application afin de bien séparer chaque route et chaque controller
-
-## PART 2 : Vous déclarerez 4 nouvelles routes (et leur contrôleur associé) dans le routeur "kittens" :
-
-> ``/add`` pour afficher le formulaire
-
-> ``/add`` pour récupérer les données du formulaire 
-> >Vous devrez lors de l'ajout d'un chaton créer le fichier <id>.json et mettre à jour le fichier kittens.json. Utilisez le module fs de Node.js pour cela)
-
-> ``/update/:id`` pour afficher un formulaire de modification
-
-
-> ``/update/:id`` pour récupérer les données de formulaire et modifier les données du chaton,
-> > il faudra mettre à jour les fichier JSON
-
-
-## 📢 Point important !
-
-Sachant que nous n'avons pas encore vu comment uploader des images avec Express, vous utiliserez un simple champs texte pour les photos de chats, et le service https://placekitten.com/ dans votre formulaire d'ajout.
-
-Vous pourrez ensuite adapter l'affichage avec une simple condition, par exemple :
+Voici un exemple de document produit :
 
 ```js
-    const kittenImage = kitten.image.startsWith("http")
-    ? kitten.image
-    : `/images/${kitten.image}`;
+{
+    sale : true,
+    price : 0.99,
+    society : "Alex",
+    qty: 19,
+    size: { h: 11, w: 29, uom: "cm" },
+    year : "2019-08-01"  
+};
 
-    res.send(`
-        …
-        <img src="${kittenImage}" alt="Photo de ${kitten.name}" >
-        …
-      `);
+```
+En vous aidant de la documentation de Mongoose, créez le schéma correspondant à ce document dans un nouveau fichier Product.js et exportez son modèle Mongoose (Documentation en ligne)
+import mongoose from "mongoose";
+const { Schema, model } = mongoose;
+
+// TODO …
+
+```js
+export const ProductModel = /* TODO … */
+
+```
+
+
+Ajoutez des documents à votre collection.
+Créez un fichier principal que vous appellerez save.js , importez votre modèle ainsi que les données depuis ./Data/products.js, du dossier d'exercice.
+
+Puis à l'aide de l'instruction suivante insérer les données en base de données, écrire le code dans un fichier save.js
+
+
+```js
+await ProductModel.insertMany(/* VOS DOCUMENTS */);
+```
+
+Pour insérer les données tapez la ligne de commande suivante :
+
+
+```js
+node save.js
+```
+
+Vérifiez que les données sont bien en place à l'aide de la syntaxe suivante, dans le même fichier save.js
+
+
+```js
+const companies = await ProductModel.find({}, {_id:0, society:1, price:1, qty: 1 });
+console.log('Companies:', companies);
 ```
