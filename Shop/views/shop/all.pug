@@ -1,0 +1,10 @@
+extends ../layout/layout
+
+block content
+    h1#title All
+    each prod in products
+        div.listItem
+            div Nom : #{prod.society}
+            div Quantité : #{prod.qty}
+            a(href='/show/'+prod.society).elemLink Voir Plus
+            a(href='/delete/'+prod.society).elemLink Supprimer

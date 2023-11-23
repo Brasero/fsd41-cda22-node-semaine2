@@ -1,0 +1,22 @@
+mixin menuItem(name, href)
+    li(class=(title === name) ? "active link" : "link")
+        a(href=href) #{name}
+
+doctype html
+html(lang="fr")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/assets/css/style.css")
+        title= title || 'Shop'
+
+    body
+        header
+            nav
+                ul
+                    +menuItem('Home', '/')
+                    +menuItem("All", "/all")
+
+        block content
+
+        footer 2019 - Tous droits réservés
