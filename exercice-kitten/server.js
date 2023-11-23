@@ -2,11 +2,15 @@ import express from "express";
 import {join} from "node:path";
 import kittenRoutes from './router/kitten.js'
 import productRoutes from './router/product.js'
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 
+dotenv.config();
 const app = express();
 
 const cwd = process.cwd()
 const staticPath = join(cwd, 'public')
+
 
 const myMiddleware = (req, res, next) => {
     console.log('hello middleware');

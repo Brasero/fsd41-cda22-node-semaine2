@@ -11,6 +11,7 @@ const middleware = (req,res,next) => {
 router.get('/', middleware, kittenController.home)
 router.get('/kittens/:id', kittenController.getKittenById)
 router.get('/add', kittenController.addKitten)
+router.get('/delete/:id', kittenController.deleteKitten)
 
 router.post('/add', kittenController.addKitten)
 
