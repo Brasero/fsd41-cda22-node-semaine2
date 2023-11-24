@@ -12,13 +12,15 @@ Pour plus de détails à ce sujet, vous pouvez consulter le package **Passport**
 
 ---
 
-Vous devez créer une page d'enregistrement d'un utilisateur, vérifiez que celui-ci n'existe pas déjà en base de données; puis une fois l'utilisateur enregistré il est redirigé vers la page de login. Il devra alors s'authentifier pour accéder à la page Dashboard sécurisée.
+Vous devez créer une page d'enregistrement d'un utilisateur, vérifiez que celui-ci n'existe pas déjà en base de données ; 
 
-Dans ce TP vous devez partir du modèle Express **model_complet_02**, dans le dossier MODELS. Une fois votre code en place vous devez le mettre sur votre serveur Git et transmettre l'adresse du dépôt à votre formateur.
+Puis une fois l'utilisateur enregistré, il est redirigé vers la page de login. Il devra alors s'authentifier pour accéder à la page Dashboard sécurisée.
 
-Vous serez noté sur la qualité algorithmique de votre code ainsi que la maîtrise des notions abordées en cours.
+Une fois votre code en place, vous devez le mettre sur votre serveur Git et me transmettre l'adresse du repo.
 
-Vous utiliserez **semantic-ui** pour l'aspect graphique de l'application.
+Vous serez noté sur la qualité algorithmique de votre code ainsi que la maîtrise des notions abordées en cours et le respect des consignes de cet énoncé.
+
+Vous utiliserez un framework css de votre choix pour l'aspect graphique de l'application.
 
 ## 01 Créez le modèle User
 
